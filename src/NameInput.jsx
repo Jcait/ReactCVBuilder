@@ -5,11 +5,25 @@ export default function NameInput() {
     firstName: "",
     lastName: "",
   });
+
+  const fNameChange = () => {
+    const newName = document.querySelector(".nameForm").value;
+    const newFName = { ...person, firstName: newName };
+    setPerson(newFName);
+  };
+
   return (
     <section>
       <h4>Please enter your name</h4>
-      <input placeholder="Please enter your first name" type="text"></input>
-      <button type="button">Test</button>
+      <h4>{"First Name: " + person.firstName}</h4>
+      <input
+        className="nameForm"
+        placeholder="Please enter your first name"
+        type="text"
+      ></input>
+      <button type="button" onClick={fNameChange}>
+        Test
+      </button>
     </section>
   );
 }
