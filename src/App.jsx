@@ -11,7 +11,6 @@ function App() {
       <Nav />
       <main>
         <NameInput />
-        <NameInput />
       </main>
     </>
   );

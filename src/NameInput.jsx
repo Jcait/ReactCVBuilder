@@ -4,26 +4,81 @@ export default function NameInput() {
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
+    email: "",
+    tel: "",
   });
 
-  const fNameChange = () => {
-    const newName = document.querySelector(".nameForm").value;
-    const newFName = { ...person, firstName: newName };
-    setPerson(newFName);
+  const NameChange = () => {
+    const newFName = document.querySelector(".firstName").value;
+    const newLName = document.querySelector(".lastName").value;
+    const email = document.querySelector(".email").value;
+    const tel = document.querySelector(".tel").value;
+    const newPerson = {
+      ...person,
+      firstName: newFName,
+      lastName: newLName,
+      email: email,
+      tel: tel,
+    };
+    setPerson(newPerson);
   };
+
+  const handleSbmit = (e) => {
+    e.preventDefault();
+    NameChange();
+  };
+
+  function NameTitle() {
+    return (
+      <>
+        <h4>Please enter your details</h4>
+        <h4>{person.firstName ? `First Name: ${person.firstName}` : null}</h4>
+        <h4>{person.lastName ? "Last Name: " + person.lastName : null}</h4>
+        <h4>{person.email ? "Email: " + person.email : null}</h4>
+        <h4>{person.tel ? "Contact No. " + person.tel : null}</h4>
+      </>
+    );
+  }
 
   return (
     <section>
-      <h4>Please enter your name</h4>
-      <h4>{"First Name: " + person.firstName}</h4>
-      <input
-        className="nameForm"
-        placeholder="Please enter your first name"
-        type="text"
-      ></input>
-      <button type="button" onClick={fNameChange}>
-        Test
-      </button>
+      <NameTitle />
+      <form onSubmit={handleSbmit}>
+        <label htmlFor="firstName">First Name</label>
+        <input
+          name="firstName"
+          id="firstName"
+          className="firstName"
+          placeholder="Please enter your first name"
+          type="text"
+        ></input>
+        <label htmlFor="name">Last Name</label>
+        <input
+          name="lastName"
+          id="lastName"
+          className="lastName"
+          placeholder="Please enter your last name"
+          type="text"
+        ></input>
+        <label htmlFor="email">Email</label>
+        <input
+          name="email"
+          id="email"
+          className="email"
+          placeholder="email"
+          type="email"
+        ></input>
+        <label htmlFor="tel"></label>
+        <input
+          name="tel"
+          id="tel"
+          className="tel"
+          placeholder="Contant Number"
+          type="tel"
+        ></input>
+
+        <button type="submit">Test</button>
+      </form>
     </section>
   );
 }
