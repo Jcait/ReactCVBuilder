@@ -5,6 +5,7 @@ import "./App.css";
 import Nav from "./Nav";
 import NameInput from "./NameInput";
 import CareerInput from "./CareerInput";
+import MultiInputForm from "./Test";
 
 function App() {
   return (
