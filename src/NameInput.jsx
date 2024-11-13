@@ -95,7 +95,7 @@ export default function NameInput() {
   }
 
   return (
-    <section>
+    <section className="nameInput">
       {person.submitted ? (
         <>
           <NameTitle /> <button onClick={editButton}>Edit</button>

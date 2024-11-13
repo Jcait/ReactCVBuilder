@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Nav from "./Nav";
 import NameInput from "./NameInput";
+import CareerInput from "./CareerInput";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Nav />
       <main>
         <NameInput />
+        <CareerInput />
       </main>
     </>
   );
