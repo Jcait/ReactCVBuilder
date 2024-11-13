@@ -6,105 +6,101 @@ export default function NameInput() {
     lastName: "",
     email: "",
     tel: "",
-    submitted: false,
   });
 
-  const NameChange = () => {
-    const newFName = document.querySelector(".firstName").value;
-    const newLName = document.querySelector(".lastName").value;
-    const email = document.querySelector(".email").value;
-    const tel = document.querySelector(".tel").value;
-    const newPerson = {
-      ...person,
-      firstName: newFName,
-      lastName: newLName,
-      email: email,
-      tel: tel,
-      submitted: true,
-    };
-    setPerson(newPerson);
+  const [isPressed, setIsPressed] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPerson((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  const handleSbmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    NameChange();
+    setIsPressed(!isPressed);
   };
-
-  const editButton = () => {
-    const newPerson = {
-      ...person,
-      submitted: false,
-    };
-    setPerson(newPerson);
-  };
-
-  function NameTitle() {
-    return (
-      <>
-        {person.submitted ? null : <h4>Please enter your details</h4>}
-
-        <h4>{person.firstName ? `First Name: ${person.firstName}` : null}</h4>
-        <h4>{person.lastName ? "Last Name: " + person.lastName : null}</h4>
-        <h4>{person.email ? "Email: " + person.email : null}</h4>
-        <h4>{person.tel ? "Contact No. " + person.tel : null}</h4>
-      </>
-    );
-  }
-
-  function Form() {
-    return (
-      <>
-        <form onSubmit={handleSbmit}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            name="firstName"
-            id="firstName"
-            className="firstName"
-            placeholder="Please enter your first name"
-            type="text"
-          ></input>
-          <label htmlFor="name">Last Name</label>
-          <input
-            name="lastName"
-            id="lastName"
-            className="lastName"
-            placeholder="Please enter your last name"
-            type="text"
-          ></input>
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            id="email"
-            className="email"
-            placeholder="email"
-            type="email"
-          ></input>
-          <label htmlFor="tel"></label>
-          <input
-            name="tel"
-            id="tel"
-            className="tel"
-            placeholder="Contant Number"
-            type="tel"
-          ></input>
-
-          <button type="submit">Test</button>
-        </form>
-      </>
-    );
-  }
 
   return (
     <section className="nameInput">
-      {person.submitted ? (
-        <>
-          <NameTitle /> <button onClick={editButton}>Edit</button>
-        </>
-      ) : (
-        <>
-          <NameTitle /> <Form />
-        </>
-      )}
+      <>
+        {isPressed ? (
+          <>
+            <h4>
+              {person.firstName ? `First Name: ${person.firstName}` : null}
+            </h4>
+            <h4>{person.lastName ? "Last Name: " + person.lastName : null}</h4>
+            <h4>{person.email ? "Email: " + person.email : null}</h4>
+            <h4>{person.tel ? "Contact No. " + person.tel : null}</h4>
+            <button onClick={handleSubmit}>Edit</button>
+          </>
+        ) : (
+          <>
+            <h4>Please enter your details</h4>
+            <form
+              className="detailForm"
+              id="detailForm"
+              onSubmit={handleSubmit}
+            >
+              <p>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  name="firstName"
+                  id="firstName"
+                  className="firstName"
+                  placeholder="Please enter your first name"
+                  value={person.firstName}
+                  onChange={handleChange}
+                  type="text"
+                ></input>
+              </p>
+              <p>
+                <label htmlFor="name">Last Name</label>
+                <input
+                  name="lastName"
+                  id="lastName"
+                  className="lastName"
+                  placeholder="Please enter your last name"
+                  value={person.lastName}
+                  onChange={handleChange}
+                  type="text"
+                ></input>
+              </p>
+              <p>
+                <label htmlFor="email">Email</label>
+                <input
+                  name="email"
+                  id="email"
+                  className="email"
+                  placeholder="email"
+                  value={person.email}
+                  onChange={handleChange}
+                  type="email"
+                ></input>
+              </p>
+              <p>
+                {" "}
+                <label htmlFor="tel">Contact Number</label>
+                <input
+                  name="tel"
+                  id="tel"
+                  className="tel"
+                  placeholder="Contact Number"
+                  value={person.tel}
+                  onChange={handleChange}
+                  type="tel"
+                ></input>
+              </p>
+            </form>
+            <div className="detailSubmit">
+              <button type="submit" form="detailForm">
+                Submit
+              </button>
+            </div>
+          </>
+        )}
+      </>
     </section>
   );
 }

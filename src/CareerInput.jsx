@@ -34,37 +34,46 @@ export default function CareerInput() {
         </>
       ) : (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="jobname">Job Name</label>
-          <input
-            type="text"
-            name="jobname"
-            id="jobname"
-            value={careerDetails.jobname}
-            onChange={handleChange}
-          ></input>
-          <label htmlFor="startdate">Start Date</label>
-          <input
-            type="date"
-            name="startdate"
-            id="startdate"
-            value={careerDetails.startdate}
-            onChange={handleChange}
-          ></input>
-          <label>End Date</label>
-          <input
-            type="date"
-            name="enddate"
-            id="enddate"
-            value={careerDetails.enddate}
-            onChange={handleChange}
-          ></input>
-          <label htmlFor="jobdesc">Job Details</label>
-          <textarea
-            name="jobdesc"
-            id="jobdesc"
-            value={careerDetails.jobdesc}
-            onChange={handleChange}
-          ></textarea>
+          <p>
+            <label htmlFor="jobname">Job Name</label>
+            <input
+              type="text"
+              name="jobname"
+              id="jobname"
+              value={careerDetails.jobname}
+              onChange={handleChange}
+            ></input>
+          </p>
+          <p>
+            <label htmlFor="startdate">Start Date</label>
+            <input
+              type="date"
+              name="startdate"
+              id="startdate"
+              value={careerDetails.startdate}
+              onChange={handleChange}
+            ></input>
+          </p>
+          <p>
+            <label>End Date</label>
+            <input
+              type="date"
+              name="enddate"
+              id="enddate"
+              value={careerDetails.enddate}
+              onChange={handleChange}
+            ></input>
+          </p>
+          <p>
+            <label htmlFor="jobdesc">Job Details</label>
+            <textarea
+              name="jobdesc"
+              id="jobdesc"
+              value={careerDetails.jobdesc}
+              onChange={handleChange}
+            ></textarea>
+          </p>
+
           <button type="submit">Submit</button>
         </form>
       )}{" "}
