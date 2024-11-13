@@ -41,7 +41,8 @@ export default function NameInput() {
   function NameTitle() {
     return (
       <>
-        <h4>Please enter your details</h4>
+        {person.submitted ? null : <h4>Please enter your details</h4>}
+
         <h4>{person.firstName ? `First Name: ${person.firstName}` : null}</h4>
         <h4>{person.lastName ? "Last Name: " + person.lastName : null}</h4>
         <h4>{person.email ? "Email: " + person.email : null}</h4>
