@@ -6,6 +6,7 @@ export default function NameInput() {
     lastName: "",
     email: "",
     tel: "",
+    submitted: false,
   });
 
   const NameChange = () => {
@@ -19,6 +20,7 @@ export default function NameInput() {
       lastName: newLName,
       email: email,
       tel: tel,
+      submitted: true,
     };
     setPerson(newPerson);
   };
@@ -26,6 +28,14 @@ export default function NameInput() {
   const handleSbmit = (e) => {
     e.preventDefault();
     NameChange();
+  };
+
+  const editButton = () => {
+    const newPerson = {
+      ...person,
+      submitted: false,
+    };
+    setPerson(newPerson);
   };
 
   function NameTitle() {
@@ -40,45 +50,60 @@ export default function NameInput() {
     );
   }
 
+  function Form() {
+    return (
+      <>
+        <form onSubmit={handleSbmit}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            name="firstName"
+            id="firstName"
+            className="firstName"
+            placeholder="Please enter your first name"
+            type="text"
+          ></input>
+          <label htmlFor="name">Last Name</label>
+          <input
+            name="lastName"
+            id="lastName"
+            className="lastName"
+            placeholder="Please enter your last name"
+            type="text"
+          ></input>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            id="email"
+            className="email"
+            placeholder="email"
+            type="email"
+          ></input>
+          <label htmlFor="tel"></label>
+          <input
+            name="tel"
+            id="tel"
+            className="tel"
+            placeholder="Contant Number"
+            type="tel"
+          ></input>
+
+          <button type="submit">Test</button>
+        </form>
+      </>
+    );
+  }
+
   return (
     <section>
-      <NameTitle />
-      <form onSubmit={handleSbmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          name="firstName"
-          id="firstName"
-          className="firstName"
-          placeholder="Please enter your first name"
-          type="text"
-        ></input>
-        <label htmlFor="name">Last Name</label>
-        <input
-          name="lastName"
-          id="lastName"
-          className="lastName"
-          placeholder="Please enter your last name"
-          type="text"
-        ></input>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          id="email"
-          className="email"
-          placeholder="email"
-          type="email"
-        ></input>
-        <label htmlFor="tel"></label>
-        <input
-          name="tel"
-          id="tel"
-          className="tel"
-          placeholder="Contant Number"
-          type="tel"
-        ></input>
-
-        <button type="submit">Test</button>
-      </form>
+      {person.submitted ? (
+        <>
+          <NameTitle /> <button onClick={editButton}>Edit</button>
+        </>
+      ) : (
+        <>
+          <NameTitle /> <Form />
+        </>
+      )}
     </section>
   );
 }
