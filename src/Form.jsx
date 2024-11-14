@@ -1,17 +1,35 @@
-function Form({ text }) {
-  return <h1>{text}</h1>;
-}
+const typeSet = (key) => {
+  if (key.includes("email")) {
+    return "email";
+  } else if (key.includes("tel")) {
+    return "tel";
+  }
 
-export default function Test() {
-  const [person, setPerson] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    tel: "",
-  });
+  return "text";
+};
+
+export default function Form({ user, formName, handleChange }) {
+  const userInfo = Object.entries(user).map(([key, value]) => (
+    <p key={key}>
+      <label htmlFor={key}>
+        {key.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
+          return str.toUpperCase();
+        })}
+      </label>
+      <input
+        name={key}
+        id={key}
+        className={key}
+        type={typeSet(key)}
+        value={key.value}
+        onChange={handleChange}
+      ></input>
+    </p>
+  ));
+
   return (
-    <>
-      <h1>hi</h1>
-    </>
+    <form className={formName} name={formName}>
+      {userInfo}
+    </form>
   );
 }
