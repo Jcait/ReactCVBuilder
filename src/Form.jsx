@@ -1,3 +1,5 @@
+import SubmitButton from "./SubmitButton";
+
 const typeSet = (key) => {
   if (key.includes("email")) {
     return "email";
@@ -8,7 +10,7 @@ const typeSet = (key) => {
   return "text";
 };
 
-export default function Form({ user, formName, handleChange }) {
+export default function Form({ user, formName, handleChange, handleSubmit }) {
   const userInfo = Object.entries(user).map(([key, value]) => (
     <p key={key}>
       <label htmlFor={key}>
@@ -28,7 +30,12 @@ export default function Form({ user, formName, handleChange }) {
   ));
 
   return (
-    <form className={formName} name={formName}>
+    <form
+      className={formName}
+      id={formName}
+      name={formName}
+      onSubmit={handleSubmit}
+    >
       {userInfo}
     </form>
   );
