@@ -65,3 +65,15 @@
   gap: 10px;
   margin: 10px;
 }
+
+.careerDetails {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.careerDetails > div:first-child,
+.careerDetails > div:last-child {
+  flex-basis: 100%;
+}

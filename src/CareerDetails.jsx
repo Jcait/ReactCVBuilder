@@ -32,7 +32,7 @@ export default function CareerDetails() {
       {isPressed ? (
         <>
           {" "}
-          <ListDetails user={career} />
+          <ListDetails sectionName={"careerDetails"} user={career} />
           <EditButton isPressed={handleSubmit} />
         </>
       ) : (

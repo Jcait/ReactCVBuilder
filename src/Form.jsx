@@ -10,7 +10,7 @@ export default function Form({ user, formName, handleChange, handleSubmit }) {
           name={key}
           id={key}
           className={key}
-          value={key.value}
+          value={value}
           onChange={handleChange}
         ></textarea>
       ) : (
@@ -19,7 +19,7 @@ export default function Form({ user, formName, handleChange, handleSubmit }) {
           id={key}
           className={key}
           type={typeSet(key)}
-          value={key.value}
+          value={value}
           onChange={handleChange}
         ></input>
       )}
