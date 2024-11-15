@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Form from "./Form";
 import SubmitButton from "./SubmitButton";
+import ListDetails from "./ListDetails";
+import EditButton from "./EditButton";
 
 export default function Details() {
   const [person, setPerson] = useState({
@@ -27,14 +29,27 @@ export default function Details() {
 
   return (
     <>
-      <h1>{person.firstName}</h1>
-      <Form
-        user={person}
-        formName={"detailForm"}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
-      <SubmitButton formName={"detailForm"} />;
+      {" "}
+      <section>
+        {isPressed ? (
+          <>
+            {" "}
+            <ListDetails user={person} />
+            <EditButton isPressed={handleSubmit} />
+          </>
+        ) : (
+          <>
+            {" "}
+            <Form
+              user={person}
+              formName={"detailForm"}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+            <SubmitButton formName={"detailForm"} />
+          </>
+        )}
+      </section>
     </>
   );
 }

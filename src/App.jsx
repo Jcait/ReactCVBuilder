@@ -2,10 +2,9 @@ import { useState } from "react";
 
 import "./App.css";
 import Nav from "./Nav";
-import NameInput from "./NameInput";
-import CareerInput from "./CareerInput";
 
 import Details from "./Details";
+import CareerDetails from "./CareerDetails";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
       <Nav />
       <main>
         <Details />
+        <CareerDetails />
       </main>
     </>
   );
